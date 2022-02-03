@@ -103,7 +103,11 @@ def app():
             dis_based_model_dic[just_name]=model_full
         print(dis_based_model_dic)
 
-        model_name_dis_type = col2.selectbox('Select model', options=dis_based_model_dic.keys(), index = 0)        
+        model_name_dis_type = col2.selectbox('Select model', options=dis_based_model_dic.keys(), index = 0)
+
+        
+        
+        
 
 
 

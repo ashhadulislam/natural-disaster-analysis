@@ -2,5 +2,5 @@ streamlit
 pandas
 plotly
 numpy
-pytorch 
+torch 
 torchvision
