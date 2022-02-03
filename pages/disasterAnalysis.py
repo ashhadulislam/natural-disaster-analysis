@@ -12,9 +12,6 @@ from PIL import Image
 from lib import commons
 import torch
 
-def load_image(image_file):
-    img = Image.open(image_file)
-    return img
 
 # @st.cache
 def app():
@@ -36,15 +33,15 @@ def app():
             # st.write(file_details)
 
             # To View Uploaded Image
-            st.image(load_image(image_file)
-                # ,width=250
+            st.image(commons.load_image(image_file)
+                ,width=250
                 )
             print("Image file is it showing location?",image_file)
             image_for_model = commons.image_loader(image_file)
             print("Loaded image for model")
         else:
             proxy_img_file="data/joplin-tornado_00000001_post_disaster.png"
-            st.image(load_image(proxy_img_file),width=250)
+            st.image(commons.load_image(proxy_img_file),width=250)
             image_for_model=commons.image_loader(proxy_img_file)
             print("Loaded proxy image for model")
 
@@ -119,7 +116,7 @@ def app():
             # st.write(file_details)
 
             # To View Uploaded Image
-            st.image(load_image(image_file2),width=250)
+            st.image(commons.load_image(image_file2),width=250)
             print("Image file is it showing location?",image_file2)
             image_for_model = commons.image_loader(image_file2)
             print("Loaded image for model")
@@ -132,13 +129,13 @@ def app():
                 # st.write(file_details)
 
                 # To View Uploaded Image
-                st.image(load_image(image_file),width=250)
+                st.image(commons.load_image(image_file),width=250)
                 print("Image file is it showing location?",image_file)
                 image_for_model = commons.image_loader(image_file)
                 print("Loaded image for model")                
             else:
                 proxy_img_file="data/joplin-tornado_00000001_post_disaster.png"
-                st.image(load_image(proxy_img_file),width=250)
+                st.image(commons.load_image(proxy_img_file),width=250)
                 image_for_model=commons.image_loader(proxy_img_file)
                 print("Loaded proxy image for model")
 

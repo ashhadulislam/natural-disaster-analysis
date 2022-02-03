@@ -8,7 +8,8 @@ import plotly.express as px
 import os
 from collections import Counter
 import plotly.graph_objects as go
-
+from lib import commons
+import torch
 
 # @st.cache
 def app():
@@ -28,15 +29,15 @@ def app():
             # st.write(file_details)
 
             # To View Uploaded Image
-            st.image(load_image(image_file)
-                # ,width=250
+            st.image(commons.load_image(image_file)
+                ,width=250
                 )
             print("Image file is it showing location?",image_file)
             image_for_model = commons.image_loader(image_file)
             print("Loaded image for model")
         else:
             proxy_img_file="data/joplin-tornado_00000001_post_disaster.png"
-            st.image(load_image(proxy_img_file),width=250)
+            st.image(commons.load_image(proxy_img_file),width=250)
             image_for_model=commons.image_loader(proxy_img_file)
             print("Loaded proxy image for model")
 
@@ -49,7 +50,7 @@ def app():
         print(dic_models)
         model_name=st.selectbox('Please choose the model', options=dic_models.keys(), index = 0)
         model_file_name=dic_models[model_name]
-        num_classes = 2        
+        num_classes = 7        
         batch_size = 32
         num_epochs = 10
         feature_extract = False
@@ -71,7 +72,7 @@ def app():
                             5: 'wildfire',
                             6: 'tornado'
                         }
-        disaster_type=reverse_map_dict[pred]
+        disaster_type=reverse_map_dict[pred[0].item()]
         st.subheader("The area was affected by "+disaster_type)
         
 
