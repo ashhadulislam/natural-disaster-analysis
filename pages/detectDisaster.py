@@ -78,5 +78,5 @@ def app():
 
     with footer:
         st.header("Read the detailed discussion on ")
-        st.write("[Medium](https://ashhadulislam.medium.com/freelance-tutoring-in-qatar-33a27bee1403)")
+        # st.write("[Medium](https://ashhadulislam.medium.com/freelance-tutoring-in-qatar-33a27bee1403)")
 
